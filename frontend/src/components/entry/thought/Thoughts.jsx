@@ -1,4 +1,4 @@
-import { Box, Button, TextField, IconButton, Typography } from '@mui/material';
+import { Grid, Box, Button, TextField, IconButton, Typography } from '@mui/material';
 import { Edit as EditIcon, Delete as DeleteIcon, AspectRatio as FocusIcon } from '@mui/icons-material';
 
 import { useState } from "react";
@@ -160,28 +160,32 @@ export default function Thoughts({ journalId, entries, setEntries, focusedEntryI
                             </Box>
                         </div>
                     ) : (
-                        <div>
-                            <IconButton
-                                aria-label="Focus"
-                                color="primary"
-                                onClick={() => handleFocus(entry._id)}>
-                                <FocusIcon />
-                            </IconButton>
-                            <IconButton
-                                aria-label="Edit"
-                                color="edit"
-                                onClick={() => handleEdit(entry._id)}
-                            >
-                                <EditIcon />
-                            </IconButton>
-                            <IconButton
-                                aria-label="Delete"
-                                color="danger"
-                                onClick={() => handleDelete(entry._id)}
-                            >
-                                <DeleteIcon />
-                            </IconButton>
-                        </div>
+                        <Grid container>
+                            <Grid item xs={6}>
+                                <IconButton
+                                    aria-label="Edit"
+                                    color="edit"
+                                    onClick={() => handleEdit(entry._id)}
+                                >
+                                    <EditIcon />
+                                </IconButton>
+                                <IconButton
+                                    aria-label="Delete"
+                                    color="danger"
+                                    onClick={() => handleDelete(entry._id)}
+                                >
+                                    <DeleteIcon />
+                                </IconButton>
+                            </Grid>
+                            <Grid item display="block" align="right" xs={6}>
+                                <IconButton
+                                    aria-label="Focus"
+                                    color="primary"
+                                    onClick={() => handleFocus(entry._id)}>
+                                    <FocusIcon />
+                                </IconButton>
+                            </Grid>
+                        </Grid>
                     )}
                 </Box>
             ))}
