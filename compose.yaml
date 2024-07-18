@@ -1,4 +1,5 @@
 # Dev environment compose file, configured for hot reloads
+version: '3.8'
 services:
   mongo:
     image: mongo:latest
@@ -34,6 +35,8 @@ services:
       - ./backend/src:/usr/src/app/src
       - ./backend/tests:/usr/src/app/tests
       - ./backend/index.js:/usr/src/app/index.js
+      - ./backend/init.sh:/usr/src/app/init.sh
+    # command: sh -c "./init.sh && nodemon -L"
 
   frontend:
     build:
